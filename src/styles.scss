@@ -1,0 +1,120 @@
+/* ============================================
+   GLOBAL STYLES & LAYOUT CENTERING
+   ============================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  width: 100%;
+}
+
+/* Lenis scroll styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #06020f;
+  background-image: 
+    radial-gradient(circle at 50% 0%, #170936 0%, #06020f 70%),
+    radial-gradient(circle at 80% 80%, #0b051a 0%, #06020f 80%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Forces horizontal alignment centering of page container children */
+  justify-content: flex-start;
+  position: relative;
+}
+
+/* Centered global container layouts */
+main {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center aligning sections horizontally */
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+
+section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Absolutely centers children sections horizontally */
+  justify-content: center;
+  box-sizing: border-box;
+
+  /* Force margins auto on all direct container wrapper elements */
+  > div {
+    width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+::selection {
+  background: rgba(130, 87, 229, 0.35);
+  color: #fff;
+}
+
+/* Theme styled scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #06020f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(130, 87, 229, 0.2);
+  border-radius: 4px;
+
+  &:hover {
+    background: #8257e5;
+    box-shadow: 0 0 10px #8257e5;
+  }
+}
+
+/* Custom micro keyframe spins & speeds */
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
