@@ -1,20 +1,18 @@
+import { motion } from 'motion/react';
 import { PROJECTS } from '../../constants/data';
 import { TechBadge } from '../ui/TechBadge';
 
 // A high-fidelity CSS-based Browser Mockup component representing application UIs
 function BrowserMockup({ projectId }: { projectId: number }) {
-  // Render different UI previews based on the project type to look extremely premium
   const renderBrowserContent = () => {
     switch (projectId) {
-      case 1: // UBS OET (Lending/Mortgage Mediator Tool)
+      case 1:
         return (
           <div className="w-full h-full bg-[#080211] p-4 font-mono text-[9px] text-[#cbd5e1] flex flex-col gap-3">
-            {/* Header bar of app */}
             <div className="flex justify-between items-center border-b border-white/5 pb-2">
               <span className="text-[10px] font-bold text-accent-purple">UBS Outbound Expert Tool</span>
               <span className="bg-[#120a28] px-2 py-0.5 rounded text-[8px] text-accent-cyan">Key4 Platform</span>
             </div>
-            {/* Grid display */}
             <div className="grid grid-cols-3 gap-2 flex-grow">
               <div className="col-span-2 bg-[#120826]/60 border border-white/5 rounded-lg p-2.5 flex flex-col justify-between">
                 <span className="text-[8px] text-text-muted">AFFORDABILITY ENGINE</span>
@@ -53,7 +51,7 @@ function BrowserMockup({ projectId }: { projectId: number }) {
             </div>
           </div>
         );
-      case 2: // TVM (Threats & Vulnerability Management)
+      case 2:
         return (
           <div className="w-full h-full bg-[#080211] p-4 font-mono text-[9px] text-[#cbd5e1] flex flex-col gap-3">
             <div className="flex justify-between items-center border-b border-white/5 pb-2">
@@ -64,41 +62,23 @@ function BrowserMockup({ projectId }: { projectId: number }) {
               <div className="bg-[#1a080c]/30 border border-white/5 rounded-lg p-2.5 flex flex-col justify-between">
                 <span className="text-[7px] text-text-muted">SEVERITY COUNTS</span>
                 <div className="space-y-1 my-1 text-[8px]">
-                  <div className="flex justify-between">
-                    <span className="text-[#ff5f57]">Critical</span>
-                    <strong>14</strong>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-accent-purple">High</span>
-                    <strong>45</strong>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-accent-cyan">Medium</span>
-                    <strong>112</strong>
-                  </div>
+                  <div className="flex justify-between"><span className="text-[#ff5f57]">Critical</span><strong>14</strong></div>
+                  <div className="flex justify-between"><span className="text-accent-purple">High</span><strong>45</strong></div>
+                  <div className="flex justify-between"><span className="text-accent-cyan">Medium</span><strong>112</strong></div>
                 </div>
               </div>
               <div className="bg-[#120826]/60 border border-white/5 rounded-lg p-2.5 flex flex-col justify-between text-[7px]">
                 <span className="text-text-muted uppercase">Ingested Sources</span>
                 <ul className="space-y-1">
-                  <li className="flex items-center justify-between text-accent-green">
-                    <span>Qualys Ingest</span>
-                    <span>OK</span>
-                  </li>
-                  <li className="flex items-center justify-between text-accent-green">
-                    <span>Tanium Sync</span>
-                    <span>OK</span>
-                  </li>
-                  <li className="flex items-center justify-between text-accent-purple">
-                    <span>Wiz Cloud</span>
-                    <span>94%</span>
-                  </li>
+                  <li className="flex items-center justify-between text-accent-green"><span>Qualys Ingest</span><span>OK</span></li>
+                  <li className="flex items-center justify-between text-accent-green"><span>Tanium Sync</span><span>OK</span></li>
+                  <li className="flex items-center justify-between text-accent-purple"><span>Wiz Cloud</span><span>94%</span></li>
                 </ul>
               </div>
             </div>
           </div>
         );
-      case 3: // CRD (Cyber Risk Dashboard)
+      case 3:
         return (
           <div className="w-full h-full bg-[#080211] p-4 font-mono text-[9px] text-[#cbd5e1] flex flex-col gap-3">
             <div className="flex justify-between items-center border-b border-white/5 pb-2">
@@ -118,7 +98,7 @@ function BrowserMockup({ projectId }: { projectId: number }) {
             </div>
           </div>
         );
-      case 4: // PARIS (Privileged Access Inventory)
+      case 4:
       default:
         return (
           <div className="w-full h-full bg-[#080211] p-4 font-mono text-[9px] text-[#cbd5e1] flex flex-col gap-3">
@@ -148,20 +128,16 @@ function BrowserMockup({ projectId }: { projectId: number }) {
     <div className="w-full aspect-[4/3] rounded-2xl border border-white/[0.06] bg-[#0c061d]/80 overflow-hidden shadow-2xl relative group-hover:border-accent-purple/20 transition-all duration-500">
       {/* Top Browser Bar */}
       <div className="h-8 bg-black/40 border-b border-white/[0.05] px-4 flex items-center gap-2 justify-between">
-        {/* Window controls */}
         <div className="flex gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
           <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
           <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
         </div>
-        {/* Mock address bar */}
         <div className="bg-white/[0.03] border border-white/[0.05] rounded px-6 py-0.5 text-[8px] font-mono text-text-muted flex-grow max-w-[240px] text-center select-none truncate">
           {projectId === 1 ? 'oet.ubs.com' : projectId === 2 ? 'tvm.sec.globant.com' : projectId === 3 ? 'dashboard.risk.ey' : 'paris.privilege-auth.internal'}
         </div>
         <div className="w-10" />
       </div>
-
-      {/* Screen area content */}
       <div className="h-[calc(100%-32px)] w-full">
         {renderBrowserContent()}
       </div>
@@ -171,73 +147,94 @@ function BrowserMockup({ projectId }: { projectId: number }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 relative overflow-hidden bg-bg-primary">
-      {/* Radial Glows */}
-      <div className="absolute top-[30%] left-[-10%] w-[500px] h-[500px] rounded-full bg-accent-purple/[0.04] blur-[130px] pointer-events-none" />
-      <div className="absolute bottom-[30%] right-[-10%] w-[500px] h-[500px] rounded-full bg-accent-purple/[0.04] blur-[130px] pointer-events-none" />
+    <section id="projects" className="py-24 relative overflow-hidden">
+      {/* Synced ambient radial glows */}
+      <div className="absolute top-[30%] left-[-10%] w-[500px] h-[500px] rounded-full bg-accent-purple/[0.04] blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-[30%] right-[-10%] w-[500px] h-[500px] rounded-full bg-accent-pink/[0.03] blur-[130px] pointer-events-none" />
 
       <div className="max-w-[1000px] mx-auto px-6 relative z-10">
         
-        {/* Header */}
-        <div className="text-center md:text-left mb-20">
+        {/* Meaningful headline */}
+        <motion.div
+          className="text-center md:text-left mb-20"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6 }}
+        >
           <span className="text-[12px] font-bold font-mono tracking-widest text-accent-purple uppercase block mb-3">
-            My Portfolio
+            Real-World Applications
           </span>
           <h2 className="text-[32px] sm:text-[40px] font-black text-white font-heading tracking-tight leading-none">
             Featured Projects
           </h2>
-        </div>
+          <p className="text-[14px] text-text-muted font-light mt-3 max-w-[550px]">
+            Enterprise-grade platforms I've designed and engineered — serving thousands of users across banking, cybersecurity, and risk management.
+          </p>
+          <div className="section-divider mt-6 mx-0 md:mx-0" style={{ marginLeft: 0 }} />
+        </motion.div>
 
         {/* Alternating Projects List */}
         <div className="space-y-28">
           {PROJECTS.map((project, idx) => {
             const isEven = idx % 2 === 0;
             return (
-              <div
+              <motion.div
                 key={project.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.7, delay: 0.1 }}
                 className={`grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center`}
               >
-                {/* 1. Left/Right alternated mock preview container with radial glow behind it */}
-                <div className={`relative group ${!isEven ? 'lg:order-2' : ''}`}>
-                  {/* Glowing halo backdrop */}
+                {/* Browser preview with parallax-like hover */}
+                <motion.div
+                  className={`relative group ${!isEven ? 'lg:order-2' : ''}`}
+                  whileHover={{ y: -6 }}
+                  transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+                >
                   <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-accent-purple to-accent-pink/30 opacity-0 group-hover:opacity-10 blur-[30px] transition-opacity duration-700 pointer-events-none" />
                   <div className="absolute -inset-2 rounded-2xl bg-accent-purple/[0.06] blur-[20px] pointer-events-none" />
-                  
-                  {/* Browser frame */}
                   <BrowserMockup projectId={project.id} />
-                </div>
+                </motion.div>
 
-                {/* 2. Text layout */}
+                {/* Text layout */}
                 <div className={`flex flex-col gap-4 text-center lg:text-left ${!isEven ? 'lg:order-1' : ''}`}>
-                  <span className="text-[11px] font-bold font-mono tracking-widest text-accent-purple uppercase">
+                  <motion.span
+                    className="text-[11px] font-bold font-mono tracking-widest text-accent-purple uppercase"
+                    initial={{ opacity: 0, x: isEven ? -20 : 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.2 }}
+                  >
                     Featured Project
-                  </span>
+                  </motion.span>
                   
                   <h3 className="font-heading text-[24px] sm:text-[30px] font-extrabold text-white leading-none tracking-tight">
                     {project.title}
                   </h3>
 
-                  {/* Overlapping description card */}
-                  <div className="relative rounded-2xl border border-white/[0.04] bg-[#0c061d]/60 p-6 md:p-7 shadow-xl backdrop-blur-md hover:border-accent-purple/10 transition-colors duration-300">
+                  {/* Description card with glass effect */}
+                  <div className="glass-refined p-6 md:p-7 shadow-xl">
                     <p className="text-[13px] sm:text-[14px] text-text-secondary leading-relaxed font-light">
                       {project.description.join(' ')}
                     </p>
                   </div>
 
-                  {/* Tech stack pill tags */}
+                  {/* Tech stack */}
                   <div className="flex flex-wrap gap-2 justify-center lg:justify-start mt-3">
                     {project.techStack.map((tech) => (
                       <TechBadge key={tech} label={tech} />
                     ))}
                   </div>
 
-                  {/* Action/Links */}
+                  {/* Action Links */}
                   <div className="flex items-center gap-4 justify-center lg:justify-start mt-4">
                     <a
                       href="https://github.com/sudarshankankal"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-text-muted hover:text-white transition-colors duration-300"
+                      className="text-text-muted hover:text-white transition-colors duration-300 hover:scale-110 inline-block"
                       title="View GitHub Repository"
                     >
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -248,7 +245,7 @@ export default function Projects() {
                       href="https://github.com/sudarshankankal"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-text-muted hover:text-white transition-colors duration-300"
+                      className="text-text-muted hover:text-white transition-colors duration-300 hover:scale-110 inline-block"
                       title="View Live Site"
                     >
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -259,7 +256,7 @@ export default function Projects() {
                     </a>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

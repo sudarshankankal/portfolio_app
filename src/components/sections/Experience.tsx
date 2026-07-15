@@ -25,7 +25,7 @@ const EXPERIENCE_ITEMS: ExperienceItem[] = [
     highlights: [...EXPERIENCES[0].highlights],
     techStack: [...EXPERIENCES[0].techStack],
     iconType: 'ribbon',
-    iconColor: '#3b82f6', // blue
+    iconColor: '#3b82f6',
   },
   {
     id: 2,
@@ -36,7 +36,7 @@ const EXPERIENCE_ITEMS: ExperienceItem[] = [
     highlights: [...EXPERIENCES[1].highlights],
     techStack: [...EXPERIENCES[1].techStack],
     iconType: 'bulb',
-    iconColor: '#ec4899', // pink
+    iconColor: '#ec4899',
   },
   {
     id: 3,
@@ -47,7 +47,7 @@ const EXPERIENCE_ITEMS: ExperienceItem[] = [
     highlights: [...EXPERIENCES[2].highlights],
     techStack: [...EXPERIENCES[2].techStack],
     iconType: 'hat',
-    iconColor: '#8257e5', // purple
+    iconColor: '#8257e5',
   },
   {
     id: 4,
@@ -62,7 +62,7 @@ const EXPERIENCE_ITEMS: ExperienceItem[] = [
     ],
     techStack: ['React 19', 'Framer Motion', 'Tailwind v4', 'Vite'],
     iconType: 'mic',
-    iconColor: '#00e5ff', // cyan
+    iconColor: '#00e5ff',
   }
 ];
 
@@ -105,33 +105,44 @@ export default function Experience() {
   };
 
   return (
-    <section id="experience" className="py-24 relative overflow-hidden bg-bg-primary">
-      {/* Background glow effects */}
-      <div className="absolute top-[20%] right-[-5%] w-[450px] h-[450px] rounded-full bg-accent-purple/[0.04] blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[20%] left-[-5%] w-[450px] h-[450px] rounded-full bg-accent-purple/[0.04] blur-[120px] pointer-events-none" />
+    <section id="experience" className="py-24 relative overflow-hidden">
+      {/* Synced ambient glow — matches page gradient */}
+      <div className="absolute top-[20%] right-[-5%] w-[500px] h-[500px] rounded-full bg-accent-purple/[0.05] blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-[20%] left-[-5%] w-[500px] h-[500px] rounded-full bg-accent-pink/[0.03] blur-[130px] pointer-events-none" />
 
       <div className="max-w-[1000px] mx-auto px-6 relative z-10">
         
-        {/* Title */}
-        <div className="text-center md:text-left mb-16">
+        {/* Meaningful title */}
+        <motion.div
+          className="text-center md:text-left mb-16"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6 }}
+        >
           <span className="text-[12px] font-bold font-mono tracking-widest text-accent-purple uppercase block mb-3">
-            Career Timeline
+            Where I've Made Impact
           </span>
           <h2 className="text-[32px] sm:text-[40px] font-black text-white font-heading tracking-tight leading-none">
             Work Experience
           </h2>
-        </div>
+          <p className="text-[14px] text-text-muted font-light mt-3 max-w-[500px]">
+            From enterprise banking platforms to cybersecurity dashboards — here's my professional journey building products at scale.
+          </p>
+          <div className="section-divider mt-6 mx-0 md:mx-0" style={{ marginLeft: 0 }} />
+        </motion.div>
 
         {/* 2x2 Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {EXPERIENCE_ITEMS.map((item, idx) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="group relative rounded-3xl border border-white/[0.04] bg-[#0c061c]/45 hover:bg-[#120928]/60 p-8 hover:border-accent-purple/20 transition-all duration-500 shadow-xl overflow-hidden cursor-pointer"
+              transition={{ duration: 0.5, delay: idx * 0.12 }}
+              whileHover={{ y: -4, scale: 1.01 }}
+              className="magnetic-card group relative rounded-3xl border border-white/[0.04] bg-[#0c061c]/45 hover:bg-[#120928]/60 p-8 hover:border-accent-purple/20 transition-all duration-500 shadow-xl overflow-hidden cursor-pointer"
               onClick={() => setSelectedExp(item)}
             >
               {/* Inner card glow border effect */}
@@ -144,9 +155,13 @@ export default function Experience() {
                     className="absolute inset-0 rounded-2xl blur-md opacity-25"
                     style={{ backgroundColor: item.iconColor }}
                   />
-                  <div className="relative w-14 h-14 rounded-2xl bg-[#140b2a] border border-white/[0.06] flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-300">
+                  <motion.div
+                    className="relative w-14 h-14 rounded-2xl bg-[#140b2a] border border-white/[0.06] flex items-center justify-center shadow-inner"
+                    whileHover={{ rotate: 8, scale: 1.1 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                  >
                     {getIcon(item.iconType, item.iconColor)}
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Text content */}
@@ -202,9 +217,9 @@ export default function Experience() {
 
               {/* Modal Card */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                initial={{ opacity: 0, scale: 0.92, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 15 }}
+                exit={{ opacity: 0, scale: 0.92, y: 20 }}
                 transition={{ type: 'spring', damping: 25, stiffness: 350 }}
                 className="relative w-full max-w-[620px] rounded-3xl border border-white/[0.08] bg-[#0c061d] p-8 md:p-10 shadow-2xl z-10 overflow-hidden"
               >
@@ -251,7 +266,7 @@ export default function Experience() {
                 </div>
 
                 {/* Highlights List */}
-                <div className="mb-8">
+                <div className="mb-8 stagger-children">
                   <span className="block text-[10px] text-text-muted font-mono uppercase tracking-widest mb-4">
                     Key Highlights & Responsibilities
                   </span>

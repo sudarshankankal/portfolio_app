@@ -1,6 +1,19 @@
 /* ============================================
-   GLOBAL STYLES & LAYOUT CENTERING
+   GLOBAL STYLES, LAYOUT & ANIMATIONS
+   All SCSS styling for the portfolio app
    ============================================ */
+
+// ─── VARIABLES ───
+$bg-primary: #06020f;
+$bg-secondary: #0b051a;
+$bg-tertiary: #130a29;
+$accent-purple: #8257e5;
+$accent-cyan: #00e5ff;
+$accent-pink: #ec4899;
+$text-muted: #6a5a9c;
+$text-secondary: #a594fd;
+
+// ─── RESET & BASE ───
 *,
 *::before,
 *::after {
@@ -13,7 +26,7 @@ html {
   width: 100%;
 }
 
-/* Lenis scroll styles */
+// Lenis scroll styles
 html.lenis,
 html.lenis body {
   height: auto;
@@ -21,10 +34,10 @@ html.lenis body {
 
 .lenis-smooth {
   scroll-behavior: auto !important;
-}
 
-.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
+  [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
 }
 
 .lenis-stopped {
@@ -39,31 +52,31 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #06020f;
-  background-image: 
-    radial-gradient(circle at 50% 0%, #170936 0%, #06020f 70%),
-    radial-gradient(circle at 80% 80%, #0b051a 0%, #06020f 80%);
+  background-color: $bg-primary;
+  background-image:
+    radial-gradient(circle at 50% 0%, #170936 0%, $bg-primary 70%),
+    radial-gradient(circle at 80% 80%, $bg-secondary 0%, $bg-primary 80%);
   background-attachment: fixed;
   overflow-x: hidden;
 }
 
+// ─── LAYOUT CENTERING ───
 #root {
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Forces horizontal alignment centering of page container children */
+  align-items: center;
   justify-content: flex-start;
   position: relative;
 }
 
-/* Centered global container layouts */
 main {
   width: 100%;
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center aligning sections horizontally */
+  align-items: center;
   justify-content: flex-start;
   flex-grow: 1;
 }
@@ -72,11 +85,9 @@ section {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Absolutely centers children sections horizontally */
+  align-items: center;
   justify-content: center;
-  box-sizing: border-box;
 
-  /* Force margins auto on all direct container wrapper elements */
   > div {
     width: 100%;
     margin-left: auto !important;
@@ -84,37 +95,229 @@ section {
   }
 }
 
+// ─── SELECTION & SCROLLBAR ───
 ::selection {
-  background: rgba(130, 87, 229, 0.35);
+  background: rgba($accent-purple, 0.35);
   color: #fff;
 }
 
-/* Theme styled scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #06020f;
+  background: $bg-primary;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(130, 87, 229, 0.2);
+  background: rgba($accent-purple, 0.2);
   border-radius: 4px;
 
   &:hover {
-    background: #8257e5;
-    box-shadow: 0 0 10px #8257e5;
+    background: $accent-purple;
+    box-shadow: 0 0 10px $accent-purple;
   }
 }
 
-/* Custom micro keyframe spins & speeds */
+// ─── KEYFRAMES ───
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes text-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes border-glow-rotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floating-badge {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes hero-gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes reveal-line {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+// ─── UTILITY CLASSES ───
 .animate-spin-slow {
   animation: spin-slow 12s linear infinite;
 }
 
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.animate-text-shimmer {
+  background-size: 200% auto;
+  animation: text-shimmer 4s ease-in-out infinite;
+}
+
+.animate-floating-badge {
+  animation: floating-badge 3s ease-in-out infinite;
+}
+
+.animate-hero-gradient {
+  background-size: 300% 300%;
+  animation: hero-gradient-shift 8s ease infinite;
+}
+
+.animate-reveal-line {
+  animation: reveal-line 1.2s ease-out forwards;
+}
+
+.animate-subtle-pulse {
+  animation: subtle-pulse 3s ease-in-out infinite;
+}
+
+// Staggered entrance animations for children
+.stagger-children {
+  > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: stagger-fade-in 0.6s ease-out forwards;
+  }
+
+  @for $i from 1 through 10 {
+    > *:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.08}s;
+    }
+  }
+}
+
+@keyframes stagger-fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Magnetic hover card effect
+.magnetic-card {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.4s ease;
+
+  &:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow:
+      0 20px 40px rgba($accent-purple, 0.12),
+      0 0 0 1px rgba($accent-purple, 0.15);
+  }
+}
+
+// Glow border animation on hover
+.glow-border-hover {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba($accent-purple, 0.3),
+      rgba($accent-cyan, 0.2),
+      transparent
+    );
+    background-size: 300% 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    animation: border-glow-rotate 3s linear infinite paused;
+  }
+
+  &:hover::before {
+    opacity: 1;
+    animation-play-state: running;
+  }
+}
+
+// Section divider gradient line
+.section-divider {
+  width: 80px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, $accent-cyan, $accent-purple);
+  margin: 0 auto;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -2px 0;
+    background: linear-gradient(90deg, $accent-cyan, $accent-purple);
+    filter: blur(6px);
+    opacity: 0.4;
+    border-radius: inherit;
+  }
+}
+
+// Text gradient shimmer for headlines
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #fff 0%,
+    #fff 40%,
+    $accent-cyan 50%,
+    #fff 60%,
+    #fff 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: text-shimmer 6s linear infinite;
+}
+
+// Glassmorphism card with refined backdrop
+.glass-refined {
+  background: rgba(10, 5, 23, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba($accent-purple, 0.08);
+  border-radius: 24px;
+  transition: all 0.4s ease;
+
+  &:hover {
+    border-color: rgba($accent-purple, 0.2);
+    background: rgba(14, 8, 30, 0.7);
+  }
+}
+
+// Dot grid decorative background pattern
+.dot-grid-bg {
+  background-image: radial-gradient(
+    circle,
+    rgba($accent-purple, 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+// Smooth scroll-triggered parallax helper
+.parallax-slow {
+  will-change: transform;
+  transition: transform 0.1s linear;
 }
