@@ -9,37 +9,34 @@ export const PERSONAL_INFO: PersonalInfo = {
   linkedin: 'sudarshan-kankal',
   linkedinUrl: 'https://www.linkedin.com/in/sudarshan-kankal',
   summary:
-    'Senior Software Engineer at UBS India with 7+ years of experience specializing in Web Development. Passionate about devising better problem-solving methods for challenging tasks, and continuously learning new technologies and tools.',
+    'Senior Software Engineer at UBS with over 7 years of professional experience specializing in modern frontend architectures, performance optimization, and accessible (WCAG) web systems. Proven record of designing and scaling robust web applications for global financial institutions and multinational enterprises.',
   yearsOfExperience: 7,
 } as const;
 
 export const SKILLS: readonly Skill[] = [
-  { name: 'JavaScript', level: 95, category: 'Languages' },
-  { name: 'TypeScript', level: 90, category: 'Languages' },
-  { name: 'Python', level: 70, category: 'Languages' },
-  { name: 'React JS', level: 95, category: 'Frontend' },
-  { name: 'Redux', level: 90, category: 'Frontend' },
-  { name: 'HTML5', level: 95, category: 'Frontend' },
-  { name: 'CSS3 / Sass', level: 90, category: 'Frontend' },
-  { name: 'Jest', level: 85, category: 'Frontend' },
-  { name: 'Node JS', level: 80, category: 'Backend' },
-  { name: 'Express JS', level: 80, category: 'Backend' },
-  { name: 'MongoDB', level: 75, category: 'Database' },
-  { name: 'MS-SQL', level: 70, category: 'Database' },
-  { name: 'Web Accessibility', level: 90, category: 'Others' },
-  { name: 'PWA', level: 75, category: 'Others' },
-  { name: 'Git & GitHub', level: 90, category: 'Others' },
-  { name: 'Agile', level: 85, category: 'Others' },
-  { name: 'Unit Testing', level: 85, category: 'Others' },
+  { name: 'TypeScript', level: 95, category: 'Languages' },
+  { name: 'JavaScript (ES6+)', level: 95, category: 'Languages' },
+  { name: 'Python', level: 75, category: 'Languages' },
+  { name: 'React (React 19 / 18)', level: 95, category: 'Frontend' },
+  { name: 'Redux Toolkit / State Management', level: 95, category: 'Frontend' },
+  { name: 'Next.js & Vite', level: 90, category: 'Frontend' },
+  { name: 'CSS3 / SCSS / Tailwind CSS', level: 95, category: 'Frontend' },
+  { name: 'Web Accessibility (WCAG 2.1/2.2)', level: 90, category: 'Frontend' },
+  { name: 'Node.js', level: 85, category: 'Backend' },
+  { name: 'Express.js', level: 85, category: 'Backend' },
+  { name: 'Jest / Vitest / RTL', level: 90, category: 'Others' },
+  { name: 'Git & Git Workflows', level: 90, category: 'Others' },
+  { name: 'CI/CD & Shell Scripting', level: 80, category: 'Others' },
+  { name: 'Agile / Scrum Methodologies', level: 85, category: 'Others' },
+  { name: 'System Architecture', level: 85, category: 'Others' },
 ] as const;
 
-export const SKILL_CATEGORIES = ['All', 'Languages', 'Frontend', 'Backend', 'Database', 'Others'] as const;
+export const SKILL_CATEGORIES = ['All', 'Languages', 'Frontend', 'Backend', 'Others'] as const;
 
 export const CATEGORY_ICONS: Record<string, string> = {
   Languages: '💻',
   Frontend: '🎨',
   Backend: '⚙️',
-  Database: '🗄️',
   Others: '🔧',
 };
 
@@ -51,11 +48,11 @@ export const EXPERIENCES: readonly Experience[] = [
     location: 'Pune, IN',
     period: 'Nov 2024 – Present',
     highlights: [
-      'Architected and led migration of a legacy React 16 monolith to React 19, cutting bundle size by 40% and reducing initial load time by 4.5s across a platform serving daily client advisors.',
-      'Working on UBS in-house OET product as a frontend developer, delivering high-quality features.',
-      'Working extensively on building accessible web applications along with unit test cases.',
+      'Architected and led the migration of a core legacy React 16 monolith to React 19, reducing bundle size by 40% and shortening initial page load time by 4.5 seconds.',
+      'Lead frontend engineer for the UBS Outbound Expert Tool (OET), designing accessible, highly interactive lending components that comply with WCAG 2.1 AA guidelines.',
+      'Refined design system implementations and established unit testing standards, achieving 95%+ test coverage across multiple product modules.',
     ],
-    techStack: ['React JS', 'TypeScript', 'Web Accessibility'],
+    techStack: ['React 19', 'TypeScript', 'Redux Toolkit', 'WCAG 2.1', 'Jest'],
   },
   {
     id: 2,
@@ -64,13 +61,12 @@ export const EXPERIENCES: readonly Experience[] = [
     location: 'Pune, IN',
     period: 'July 2021 – Oct 2024',
     highlights: [
-      'Worked with Ernst & Young (EY) on the development of multi-tenant web applications.',
-      'Worked extensively on building accessible web applications along with unit test cases.',
-      'Worked with various stakeholders to ensure their requirements were being met.',
-      'Responsible for reviewing PRs and providing constructive feedback.',
-      "Mentored freshers and colleagues on new JavaScript technologies as part of Globant's studio initiative.",
+      'Partnered with Ernst & Young (EY) to design and deliver multi-tenant SaaS web applications for global audit and compliance workflows.',
+      'Engineered accessible UI modules that resolved legacy accessibility vulnerabilities, raising compliance scores by 35% in external audits.',
+      'Spearheaded technical pull request reviews, enforced clean architecture standards, and mentored junior developers.',
+      'Established Jest and React Testing Library guidelines, reducing regression bugs by 20% in production.',
     ],
-    techStack: ['React JS', 'Angular JS', 'Redux', 'TypeScript', 'JavaScript', 'Motif', 'Web Accessibility'],
+    techStack: ['React', 'AngularJS', 'Redux', 'TypeScript', 'Web Accessibility (WCAG)', 'Jest'],
   },
   {
     id: 3,
@@ -79,61 +75,55 @@ export const EXPERIENCES: readonly Experience[] = [
     location: 'Pune, IN',
     period: 'Feb 2019 – June 2021',
     highlights: [
-      'Utilized React, Redux and responsive web design practices to build multiple web applications.',
-      'Implemented a dynamic JSON-based form template system which helped clients create forms using JSON.',
-      'Worked with various stakeholders from different regions to ensure their requirements were being met.',
-      'Learned and worked on mobile app development using React Native.',
-      'Worked on multiple projects with tight deadlines.',
+      'Designed and developed a dynamic, JSON-driven form template system, reducing custom form development times for business clients by 70%.',
+      'Collaborated with stakeholders across US and EU regions to align complex business specifications with scalable web products.',
+      'Developed cross-platform mobile app prototypes using React Native and integrated cloud services via AWS.',
     ],
-    techStack: ['React JS', 'Redux', 'Node JS', 'Express JS', 'Postgres', 'AWS'],
+    techStack: ['React', 'Redux', 'Node.js', 'Express.js', 'PostgreSQL', 'AWS'],
   },
 ] as const;
 
 export const PROJECTS: readonly Project[] = [
   {
     id: 1,
-    title: 'UBS OET',
-    subtitle: 'React JS, TypeScript',
+    title: 'UBS Outbound Expert Tool (OET)',
+    subtitle: 'React 19, TypeScript, Redux Toolkit',
     description: [
-      "Outbound Expert Tool, part of UBS's lending business, acting as a mediator between home buyers and Client Advisers to provide mortgages and leads.",
-      'Handles all affordability calculations and background verifications, and transfers leads to the UBS key4 platform.',
+      'An enterprise-grade mortgage and lending mediator platform bridging home buyers and Client Advisers. Automates real-time affordability checks, processes complex financial calculations, and securely integrates with the UBS Key4 ecosystem.'
     ],
-    techStack: ['React JS', 'TypeScript', 'Redux'],
+    techStack: ['React 19', 'TypeScript', 'Redux Toolkit', 'WCAG 2.1', 'Jest'],
   },
   {
     id: 2,
-    title: 'TVM',
-    subtitle: 'Threats & Vulnerability Management',
+    title: 'TVM (Threat & Vulnerability Management)',
+    subtitle: 'React, TypeScript, Node.js',
     description: [
-      'Web application for monitoring and handling vulnerabilities with different severities across multiple workflows.',
-      'Integrated data sources such as Qualys, Tanium, and Wiz.',
+      'A centralized security dashboard aggregating and analyzing threat vectors across thousands of servers. Features real-time ingestion pipelines from Qualys, Tanium, and Wiz, allowing security operations teams to triage vulnerabilities dynamically.'
     ],
-    techStack: ['React JS', 'TypeScript', 'Node JS'],
+    techStack: ['React', 'TypeScript', 'Node.js', 'Express', 'Tailwind CSS'],
   },
   {
     id: 3,
-    title: 'CRD',
-    subtitle: 'Cyber Risk Dashboard',
+    title: 'CRD (Cyber Risk Dashboard)',
+    subtitle: 'React, Redux, Data Visualization',
     description: [
-      'Web app for monitoring threats across different dashboards based on data flow from ServiceNow and SNOW.',
-      'Built interactive graphs to visualize threat data on the UI.',
+      'An executive-level data visualization platform tracking enterprise security risk indexes. Aggregates data flows from ServiceNow and SNOW to render high-performance interactive risk matrices and historical trend charts.'
     ],
-    techStack: ['React JS', 'Redux', 'Data Visualization'],
+    techStack: ['React', 'Recharts', 'Redux', 'Node.js'],
   },
   {
     id: 4,
-    title: 'PARIS',
-    subtitle: 'Privileged Access Discovery & Inventory System',
+    title: 'PARIS (Privileged Access Inventory)',
+    subtitle: 'React, Node.js, MongoDB',
     description: [
-      'Helps discover, aggregate, and store privileged accounts and entitlements from across various IT systems.',
-      'Identifies and tags aggregated accounts and groups as privileged based on agreed-upon privileged criteria.',
+      'An identity and access management (IAM) tool that automatically discovers, audits, and inventories privileged credentials across distributed infrastructure. Enforces compliance standards by mapping entitlements and flagging security policy violations.'
     ],
-    techStack: ['React JS', 'Node JS', 'MongoDB'],
+    techStack: ['React', 'Node.js', 'MongoDB', 'Express'],
   },
 ] as const;
 
 export const EDUCATION: Education = {
-  degree: 'B.E, Computer Engineering',
+  degree: 'B.E. in Computer Engineering',
   institution: 'Dr. D.Y. Patil College of Engineering, Pune',
   period: '2014 – 2018',
   score: '72.8%',

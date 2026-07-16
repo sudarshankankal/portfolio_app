@@ -3,10 +3,10 @@ import { motion } from 'motion/react';
 import memojiAvatar from '../../assets/memoji.png';
 
 const ROLES = [
-  "I'm a Software Engineer.",
-  "I build scalable UIs.",
-  "I craft digital experiences.",
-  "I ship production code.",
+  "Senior Software Engineer",
+  "Enterprise Frontend Architect",
+  "Performance Optimization Expert",
+  "Web Accessibility Specialist",
 ];
 
 export default function Hero() {
@@ -105,13 +105,13 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
             >
-              A Software Engineer
+              Senior Software Engineer
             </motion.span>
             <h1 className="text-[36px] sm:text-[48px] md:text-[56px] font-black leading-[1.1] text-white font-heading">
-              Judges a book <br />
-              by its{' '}
+              Engineering <br />
+              enterprise{' '}
               <span className="text-accent-purple font-extrabold underline decoration-wavy decoration-accent-purple/80 underline-offset-[10px]">
-                cover...
+                systems.
               </span>
             </h1>
             <motion.p
@@ -120,7 +120,7 @@ export default function Hero() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9 }}
             >
-              Because everybody does, right?
+              Scaling high-performance, accessible web architectures.
             </motion.p>
           </motion.div>
         </div>
@@ -167,9 +167,9 @@ export default function Hero() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            A self-taught software engineer and UX enthusiast, functioning in the industry for 7+ years now.
-            I make meaningful and delightful digital products that create an equilibrium between user needs
-            and technical excellence.
+            Senior Software Engineer with 7+ years of experience designing and scaling high-performance, 
+            accessible web systems. I specialize in bridging complex system architectures with premium user 
+            interfaces, ensuring technical excellence and compliance at every layer.
           </motion.p>
         </motion.div>
       </div>

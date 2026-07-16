@@ -69,16 +69,50 @@ export default function About() {
               {/* Custom micro highlights grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 {[
-                  { icon: '🚀', text: 'React 16 → 19 Migration Architect' },
-                  { icon: '♿', text: 'Web Accessibility (WCAG) Specialist' },
-                  { icon: '📉', text: '40% Initial Bundle Load Optimizations' },
-                  { icon: '👥', text: 'Constructive Code Reviewer & Mentor' },
+                  {
+                    icon: (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-accent-cyan flex-shrink-0">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                      </svg>
+                    ),
+                    text: 'React 16 → 19 Migration Architect'
+                  },
+                  {
+                    icon: (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-accent-blue flex-shrink-0">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        <path d="m9 11 2 2 4-4" />
+                      </svg>
+                    ),
+                    text: 'Web Accessibility (WCAG) Specialist'
+                  },
+                  {
+                    icon: (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-accent-purple flex-shrink-0">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                        <line x1="12" y1="22.08" x2="12" y2="12" />
+                      </svg>
+                    ),
+                    text: '40% Initial Bundle Load Optimizations'
+                  },
+                  {
+                    icon: (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-accent-pink flex-shrink-0">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                      </svg>
+                    ),
+                    text: 'Constructive Code Reviewer & Mentor'
+                  },
                 ].map((highlight, index) => (
                   <div
                     key={index}
                     className="flex items-center gap-3 p-4 glass rounded-xl border border-white/5 text-sm text-text-secondary transition-all duration-300 hover:bg-accent-cyan/[0.05] hover:border-accent-cyan/15 hover:text-text-primary"
                   >
-                    <span className="text-lg select-none">{highlight.icon}</span>
+                    {highlight.icon}
                     <span>{highlight.text}</span>
                   </div>
                 ))}
