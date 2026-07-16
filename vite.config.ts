@@ -7,7 +7,7 @@ let base = '/'
 if (process.env.GITHUB_ACTIONS) {
   base = '/portfolio_app/'
 } else if (process.env.GITLAB_CI) {
-  base = '/portfolio/'
+  base = '/'
 }
 
 export default defineConfig({
@@ -17,5 +17,6 @@ export default defineConfig({
   ],
   base,
 })
+
 
 
