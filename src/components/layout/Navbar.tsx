@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useScrollSpy } from '../../hooks/useScrollSpy';
 
@@ -13,11 +13,11 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const activeSection = useScrollSpy();
 
-  useState(() => {
+  useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  });
+  }, []);
 
   const handleNavClick = useCallback(
     (href: string) => {
@@ -73,7 +73,7 @@ export default function Navbar() {
         {/* Desktop Links */}
         <ul className="hidden md:flex list-none gap-8">
           {NAV_ITEMS.map((link) => {
-            const isWorkActive = link.label === 'Work' && (activeSection === 'experience' || activeSection === 'projects');
+            const isWorkActive = link.label === 'Work' && (activeSection === 'experience' || activeSection === 'projects' || activeSection === 'skills');
             const isAboutActive = link.label === 'About' && (activeSection === 'hero' || activeSection === 'about');
             const isLabActive = link.label === 'Lab' && activeSection === 'lab';
             const isActive = isWorkActive || isAboutActive || isLabActive;

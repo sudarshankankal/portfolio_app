@@ -1,42 +1,40 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { NAV_LINKS } from '../constants/data';
+import { useState, useEffect } from 'react';
 
 /**
- * Tracks which section is currently in view using IntersectionObserver.
+ * Tracks which section is currently in view using scroll position detection.
  * Returns the ID of the active section for navbar highlighting.
  */
 export function useScrollSpy(): string {
   const [activeSection, setActiveSection] = useState('hero');
-  const observerRef = useRef<IntersectionObserver | null>(null);
-
-  const handleIntersect = useCallback((entries: IntersectionObserverEntry[]) => {
-    // Find the entry with the highest intersection ratio
-    const visible = entries
-      .filter((e) => e.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-    if (visible.length > 0) {
-      setActiveSection(visible[0].target.id);
-    }
-  }, []);
 
   useEffect(() => {
-    observerRef.current = new IntersectionObserver(handleIntersect, {
-      rootMargin: '-80px 0px -40% 0px',
-      threshold: [0, 0.25, 0.5, 0.75, 1],
-    });
+    const handleScroll = () => {
+      const sectionIds = ['hero', 'experience', 'skills', 'projects', 'lab', 'contact'];
+      const elements = sectionIds
+        .map((id) => document.getElementById(id))
+        .filter(Boolean) as HTMLElement[];
 
-    const sectionIds = NAV_LINKS.map((l) => l.href.replace('#', ''));
-    const elements = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[];
+      // Trigger line is 160px from the top of the viewport (leaves space for header)
+      const triggerOffset = 160;
 
-    elements.forEach((el) => observerRef.current?.observe(el));
+      for (let i = elements.length - 1; i >= 0; i--) {
+        const el = elements[i];
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= triggerOffset) {
+          setActiveSection(el.id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Run once on mount to set initial active section
+    handleScroll();
 
     return () => {
-      observerRef.current?.disconnect();
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, [handleIntersect]);
+  }, []);
 
   return activeSection;
 }
